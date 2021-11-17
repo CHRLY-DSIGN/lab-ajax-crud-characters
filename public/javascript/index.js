@@ -10,9 +10,9 @@ window.addEventListener('load', () => {
       allCharacters.forEach(character => {
 
 
-        let cardToClone = document.querySelector(".character-info").cloneNode(true);
+        let cardToClone = document.querySelector(".character-card").cloneNode(true);
 
-        let placeToCloneCard = document.querySelector(".container");
+        let placeToCloneCard = document.querySelector(".screen-info");
         placeToCloneCard.appendChild(cardToClone);
 
 
@@ -65,7 +65,7 @@ window.addEventListener('load', () => {
     let id = document.querySelector(".delete input").value
     
     charactersAPI.deleteOneRegister(id)
-      .then(document.querySelector("#delete-one").setAttribute('class','background-green'))
+      .then(document.querySelector(".delete-one").setAttribute('class','background-green'))
       .catch(
         (error) => {
           console.log(error)
@@ -124,15 +124,27 @@ window.addEventListener('load', () => {
 
         charactersAPI.updateOneRegister(id, info)
           .then(res => {
-            document.querySelector("#send-data-update").setAttribute('class','background-green');
+            document.querySelector("#send-data-update").setAttribute('class','background-green2');
             document.getElementById('edit-character-form').reset()
           })
           .catch((error) => {
             console.log(error)
-            document.querySelector("#send-data-update").setAttribute('class','background-red')
+            document.querySelector("#send-data-update").setAttribute('class','background-red2')
           })
 
   });
+
+
+
+  document.querySelector('.ipad-home-btn').addEventListener('click', function(){
+    document.querySelector('.ipad-screen').setAttribute('class', 'home-screen') 
+  })
+
+  document.querySelector('#ipadscreen').addEventListener('click', function() {
+    document.querySelector('#ipadscreen').removeAttribute('class', 'home-screen')
+    document.querySelector('#ipadscreen').setAttribute('class', 'ipad-screen')
+
+  })
 
 
 
